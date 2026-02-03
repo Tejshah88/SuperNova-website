@@ -5,11 +5,74 @@ body {
     background: #0a0a0a;
     color: white;
     text-align: center;
+    padding-left:10%;
+    padding-right: 10%;
 }
 
 header {
     padding: 60px 20px;
-    background: linear-gradient(135deg, #6200ea, #0d47a1);
+    background: url("assets/galaxy-with-logo.png") center/cover no-repeat;
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 100px;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+}
+
+.hamburger {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+.site-menu {
+    position: absolute;
+    top: 78px;
+    right: 20px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 16px;
+    min-width: 190px;
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    backdrop-filter: blur(6px);
+    text-align: left;
+}
+
+.site-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.site-menu a:hover {
+    opacity: 0.8;
+}
+
+.site-menu.open {
+    display: flex;
 }
 
 .logo {

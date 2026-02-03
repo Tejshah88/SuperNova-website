@@ -1,28 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SuperNova</title>
-    <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-    <header>
-        <h1 class="logo">SuperNova</h1>
-        <p class="tagline">Building the future, one line of code at a time.</p>
-    </header>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
 
-    <section class="content">
-        <h2>Welcome to SuperNova</h2>
-        <p>We are a FIRST Tech Challenge (FTC) ROBOTICS TEAM.</p>
-    </section>
+        <header>
+            <style>
+            body {
+                background-image: url("assets/watercolor-galaxy-backdrop.jpg");
+                background-repeat: repeat;
+                background-size: cover;
+                background-position: center;
+                background-attachment: scroll;
+            }
+            </style>
+            <div class="nav-bar">
+                <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav id="site-menu" class="site-menu" aria-hidden="true">
+                    <a href="#about">About</a>
+                    <a href="#who">Who We Are</a>
+                    <a href="#mission">Our Mission</a>
+                    <a href="#welcome">Welcome</a>
+                </nav>
+            </div>
+        </header>
 
-    <footer>
-        <p>© 2025 SuperNova. All rights reserved.</p>
-    </footer>
+        <h1>About Us</h1>
+        <p>
+            We are FTC Team 31742 - SuperNOVA, proudly powered by FRC Team 3255 - The SuperNURDs.
+            (San Pasqual high school) Our program introduces middle school students to the exciting world of FIRST Tech Challenge (FTC), where we design, build, and program robots to tackle unique challenges.
+            Along the way, we learn collaboration, problem-solving, and creativity skills that go far beyond robotics.
+        </p>
 
-    <script src="script.js"></script>
-</body>
+
+        <h2>Who We Are</h2>
+        <p>We are a team of passionate and curious students from Bear Valley Middle School, guided and mentored by dedicated high school volunteers from San Pasqual's FRC Team 3255 SuperNURD's. With their support and mentorship, we learn how to transform bold ideas into real-world solutions, one robot at a time.</p>
+
+        <h2>Our Mission</h2>
+        <p>Our mission is to inspire future innovators and leaders by empowering students to grow in STEM, teamwork, and leadership. Through robotics, we aim to spark curiosity, build confidence, and prepare ourselves to shape the technology of tomorrow.</p>
+
+        <section class="content">
+            <h2>Welcome to SuperNova</h2>
+            <p>We are a FIRST Tech Challenge (FTC) ROBOTICS TEAM.</p>
+        </section>
+
+        <section class="content" id="welcome">
+            <h2>Welcome to SuperNova</h2>
+            <p>We are a FIRST Tech Challenge (FTC) ROBOTICS TEAM.</p>
+        </section>
+
+        <script src="script.js"></script>
+    </body>
 </html>
-
