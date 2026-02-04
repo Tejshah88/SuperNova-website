@@ -149,3 +149,43 @@ footer {
 .mentor h3 {
     margin-top: 10px;
 }
+
+.footer-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+    padding: 20px;
+}
+
+.footer-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.footer-box:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.footer-box h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+}
+
+.footer-box p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
