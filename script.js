@@ -202,9 +202,17 @@ function wireNavigation() {
 async function init() {
     wireNavigation();
 
-    await Promise.all(
-        Object.entries(PAGE_FRAGMENTS).map(([pageName, fragmentPath]) => loadFragment(pageName, fragmentPath))
+    const fragmentEntries = Object.entries(PAGE_FRAGMENTS);
+    const fragmentResults = await Promise.allSettled(
+        fragmentEntries.map(([pageName, fragmentPath]) => loadFragment(pageName, fragmentPath))
     );
+
+    fragmentResults.forEach((result, index) => {
+        if (result.status === "rejected") {
+            const [pageName, fragmentPath] = fragmentEntries[index];
+            console.error(`Failed to load fragment "${pageName}" from "${fragmentPath}"`, result.reason);
+        }
+    });
 
     buildMentorCards();
     await renderUpcomingEvents();
