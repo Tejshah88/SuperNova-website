@@ -671,8 +671,19 @@ footer {
 }
 
 @media (max-width: 640px) {
-	nav { padding: 0 1rem; }
-	.nav-links { display: none; }
+	nav {
+		padding: 0 1rem;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.nav-links {
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		justify-content: center;
+		gap: 0.75rem 1rem;
+	}
 }
 
 @media (max-width: 600px) {
