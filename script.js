@@ -117,20 +117,38 @@ async function renderUpcomingEvents() {
             return;
         }
 
-        grid.innerHTML = upcomingEvents
-            .map((event, index) => {
-                const isNext = index === 0;
+        const cardsFragment = document.createDocumentFragment();
+
+        upcomingEvents.forEach((event, index) => {
+            const isNext = index === 0;
+            const card = document.createElement("article");
+            const badge = document.createElement("div");
+            const date = document.createElement("div");
+            const title = document.createElement("div");
+            const meta = document.createElement("div");
 
-                return `
-                    <article class="event-card${isNext ? ' event-card--next' : ''}">
-                        <div class="event-badge">${isNext ? 'Next up' : `Event ${index + 1}`}</div>
-                        <div class="event-date">${formatEventDate(event.date)}</div>
-                        <div class="event-title">${event.title}</div>
-                        <div class="event-meta">${event.allDay ? 'All day' : 'Scheduled time'}${event.location ? ` · ${event.location}` : ''}</div>
-                    </article>
-                `;
-            })
-            .join("");
+            card.className = `event-card${isNext ? " event-card--next" : ""}`;
+
+            badge.className = "event-badge";
+            badge.textContent = isNext ? "Next up" : `Event ${index + 1}`;
+
+            date.className = "event-date";
+            date.textContent = formatEventDate(event.date);
+
+            title.className = "event-title";
+            title.textContent = event.title;
+
+            meta.className = "event-meta";
+            meta.textContent = `${event.allDay ? "All day" : "Scheduled time"}${event.location ? ` · ${event.location}` : ""}`;
+
+            card.appendChild(badge);
+            card.appendChild(date);
+            card.appendChild(title);
+            card.appendChild(meta);
+            cardsFragment.appendChild(card);
+        });
+
+        grid.replaceChildren(cardsFragment);
     } catch (error) {
         console.error(error);
         grid.innerHTML = '<div class="events-empty">The upcoming-events list could not be loaded.</div>';
