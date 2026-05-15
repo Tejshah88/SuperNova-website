@@ -188,15 +188,42 @@ function triggerReveal() {
     }, 80);
 }
 
+function getPageNameFromHash() {
+    const hash = window.location.hash.slice(1); // Remove the '#' character
+    return hash && hash in PAGE_FRAGMENTS ? hash : "home";
+}
+
+function navigateTo(pageName) {
+    // Update URL hash to sync page state with browser history
+    if (pageName !== "home") {
+        window.location.hash = pageName;
+    } else {
+        // Remove hash for home page (cleaner URL)
+        window.history.pushState(null, "", window.location.pathname);
+    }
+    
+    // showPage will be called by hashchange event listener
+    // For home, manually call showPage since pushState doesn't trigger hashchange
+    if (pageName === "home") {
+        showPage(pageName);
+    }
+}
+
 function wireNavigation() {
     const links = document.querySelectorAll(".nav-links a[data-page], .nav-logo[data-page]");
 
     for (const link of links) {
         link.addEventListener("click", (event) => {
             event.preventDefault();
-            showPage(link.dataset.page);
+            navigateTo(link.dataset.page);
         });
     }
+
+    // Handle hash changes (from back/forward buttons or direct hash navigation)
+    window.addEventListener("hashchange", () => {
+        const pageName = getPageNameFromHash();
+        showPage(pageName);
+    });
 }
 
 async function init() {
@@ -208,7 +235,10 @@ async function init() {
 
     buildMentorCards();
     await renderUpcomingEvents();
-    triggerReveal();
+
+    // Load the page based on the initial hash (enables deep-linking)
+    const pageName = getPageNameFromHash();
+    showPage(pageName);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
